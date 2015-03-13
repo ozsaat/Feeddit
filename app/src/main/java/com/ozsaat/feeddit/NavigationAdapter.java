@@ -39,7 +39,6 @@ public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.Vi
         return items.size();
 
     }
-
     static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView titleTextView;
 
@@ -49,7 +48,7 @@ public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.Vi
         }
     }
 
-    public void setFeedlyItems(Collection<String> feedlyItems) {
+    public void setFeedlyItems(Collection<NavigationItem> feedlyItems) {
         List<String> tempStaticList = new ArrayList<>(items.subList(0, staticItemsSize));
         List<String> tempRedditList = new ArrayList<>(items.subList(staticItemsSize+feedlyItemsSize, getItemCount()));
         items.clear();
@@ -64,7 +63,7 @@ public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.Vi
         notifyDataSetChanged();
     }
 
-    public void setRedditItems(Collection<String> redditItems) {
+    public void setRedditItems(Collection<NavigationItem> redditItems) {
         List<String> tempList = new ArrayList<>(items.subList(0, staticItemsSize+feedlyItemsSize));
         items.clear();
         items.addAll(tempList);
