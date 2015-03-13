@@ -11,7 +11,7 @@ import java.util.Collection;
 import java.util.List;
 
 public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.ViewHolder> {
-    private final ArrayList<NavigationItem> items = new ArrayList<>();
+    private final ArrayList<String> items = new ArrayList<>();
     private int feedlyItemsSize = 0;
     private int staticItemsSize = 0;
 
@@ -30,7 +30,7 @@ public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.Vi
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        NavigationItem item = this.items.get(position);
+        String item = this.items.get(position);
         holder.titleTextView.setText(item);
     }
 
@@ -49,8 +49,8 @@ public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.Vi
     }
 
     public void setFeedlyItems(Collection<NavigationItem> feedlyItems) {
-        List<NavigationItem> tempStaticList = new ArrayList<>(items.subList(0, staticItemsSize));
-        List<NavigationItem> tempRedditList = new ArrayList<>(items.subList(staticItemsSize+feedlyItemsSize, getItemCount()));
+        List<String> tempStaticList = new ArrayList<>(items.subList(0, staticItemsSize));
+        List<String> tempRedditList = new ArrayList<>(items.subList(staticItemsSize+feedlyItemsSize, getItemCount()));
         items.clear();
         items.addAll(tempStaticList);
         if (feedlyItems != null) {
@@ -64,7 +64,7 @@ public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.Vi
     }
 
     public void setRedditItems(Collection<NavigationItem> redditItems) {
-        List<NavigationItem> tempList = new ArrayList<>(items.subList(0, staticItemsSize+feedlyItemsSize));
+        List<String> tempList = new ArrayList<>(items.subList(0, staticItemsSize+feedlyItemsSize));
         items.clear();
         items.addAll(tempList);
         if (redditItems != null) {
