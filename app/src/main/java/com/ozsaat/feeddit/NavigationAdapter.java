@@ -48,9 +48,9 @@ public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.Vi
         }
     }
 
-    public void setFeedlyItems(Collection<NavigationItem> feedlyItems) {
-        List<String> tempStaticList = new ArrayList<>(items.subList(0, staticItemsSize));
-        List<String> tempRedditList = new ArrayList<>(items.subList(staticItemsSize+feedlyItemsSize, getItemCount()));
+    public void setFeedlyItems(Collection<? extends String> feedlyItems) {
+        List<? extends String> tempStaticList = new ArrayList<>(items.subList(0, staticItemsSize));
+        List<? extends String> tempRedditList = new ArrayList<>(items.subList(staticItemsSize+feedlyItemsSize, getItemCount()));
         items.clear();
         items.addAll(tempStaticList);
         if (feedlyItems != null) {
@@ -63,8 +63,8 @@ public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.Vi
         notifyDataSetChanged();
     }
 
-    public void setRedditItems(Collection<NavigationItem> redditItems) {
-        List<String> tempList = new ArrayList<>(items.subList(0, staticItemsSize+feedlyItemsSize));
+    public void setRedditItems(Collection<? extends String> redditItems) {
+        List<? extends String> tempList = new ArrayList<>(items.subList(0, staticItemsSize+feedlyItemsSize));
         items.clear();
         items.addAll(tempList);
         if (redditItems != null) {
