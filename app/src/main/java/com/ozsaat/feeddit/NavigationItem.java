@@ -7,6 +7,9 @@ public class NavigationItem {
         this.title = title;
     }
 
+    public NavigationItem() {
+    }
+
     public String getTitle() {
         return title;
     }
