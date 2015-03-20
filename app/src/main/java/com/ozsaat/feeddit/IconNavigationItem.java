@@ -3,12 +3,13 @@ package com.ozsaat.feeddit;
 
 import android.graphics.drawable.Drawable;
 
-public final class IconNavigationItem extends NavigationItem {
+public class IconNavigationItem extends NavigationItem {
 
-    private int iconResId;
+    private final int iconResId;
 
-    public IconNavigationItem(String title) {
-        super(title);
+    public IconNavigationItem(int iconResId) {
+        super();
+        this.iconResId = iconResId;
     }
 
     public int getIconResId() {
