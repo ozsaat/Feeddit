@@ -1,4 +1,5 @@
 package com.ozsaat.feeddit;
+
 public class NavigationItem {
 
     private final String title;
