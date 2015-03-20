@@ -7,8 +7,8 @@ public class IconNavigationItem extends NavigationItem {
 
     private final int iconResId;
 
-    public IconNavigationItem(int iconResId) {
-        super();
+    public IconNavigationItem(String title, int iconResId) {
+        super(title);
         this.iconResId = iconResId;
     }
 
