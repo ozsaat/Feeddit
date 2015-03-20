@@ -15,4 +15,5 @@ public class IconNavigationItem extends NavigationItem {
     public int getIconResId() {
         return iconResId;
     }
+
 }
