@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.ViewHolder> {
-    private final ArrayList<String> items = new ArrayList<>();
+    private final ArrayList<NavigationItem> items = new ArrayList<>();
     private int feedlyItemsSize = 0;
     private int staticItemsSize = 0;
 
@@ -29,8 +29,8 @@ public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.Vi
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        String item = this.items.get(position);
-        holder.titleTextView.setText(item);
+        NavigationItem item = this.items.get(position);
+        holder.titleTextView.setText((CharSequence) item);
     }
 
     @Override
@@ -47,9 +47,9 @@ public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.Vi
         }
     }
 
-    public void setFeedlyItems(ArrayList<String> feedlyItems) {
-        List<? extends String> tempStaticList = new ArrayList<>(items.subList(0, staticItemsSize));
-        List<? extends String> tempRedditList = new ArrayList<>(items.subList(staticItemsSize+feedlyItemsSize, getItemCount()));
+    public void setFeedlyItems(ArrayList<NavigationItem> feedlyItems) {
+        List<? extends NavigationItem> tempStaticList = new ArrayList<>(items.subList(0, staticItemsSize));
+        List<? extends NavigationItem> tempRedditList = new ArrayList<>(items.subList(staticItemsSize+feedlyItemsSize, getItemCount()));
         items.clear();
         items.addAll(tempStaticList);
         if (feedlyItems != null) {
@@ -62,8 +62,8 @@ public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.Vi
         notifyDataSetChanged();
     }
 
-    public void setRedditItems(ArrayList<String> redditItems) {
-        List<? extends String> tempList = new ArrayList<>(items.subList(0, staticItemsSize+feedlyItemsSize));
+    public void setRedditItems(ArrayList<NavigationItem> redditItems) {
+        List<? extends NavigationItem> tempList = new ArrayList<>(items.subList(0, staticItemsSize+feedlyItemsSize));
         items.clear();
         items.addAll(tempList);
         if (redditItems != null) {
