@@ -2,13 +2,8 @@ package com.ozsaat.feeddit;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Toolbar;
 
 import java.util.ArrayList;
 
@@ -32,20 +27,20 @@ public class MainActivity extends Activity  {
     }
 
 
-    public ArrayList<String> getFeedlyItems() {
-        ArrayList<String> items = new ArrayList<>();
-        items.add("S1-A");
-        items.add("S1-B");
-        items.add("S1-C");
+    public ArrayList<NavigationItem> getFeedlyItems() {
+        ArrayList<NavigationItem> items = new ArrayList<>();
+        items.add(new NavigationItem("S1-A"));
+        items.add(new NavigationItem("S1-B"));
+        items.add(new NavigationItem("S1-C"));
         return items;
     }
 
-    public ArrayList<String> getRedditItems() {
-        ArrayList<String> items = new ArrayList<>();
-        items.add("S2-A");
-        items.add("S2-B");
-        items.add("S2-C");
-        items.add("S2-D");
+    public ArrayList<NavigationItem> getRedditItems() {
+        ArrayList<NavigationItem> items = new ArrayList<>();
+        items.add(new NavigationItem("S2-A"));
+        items.add(new NavigationItem("S2-B"));
+        items.add(new NavigationItem("S2-C"));
+        items.add(new NavigationItem("S2-D"));
         return items;
     }
 }
