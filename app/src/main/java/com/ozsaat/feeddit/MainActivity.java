@@ -12,7 +12,6 @@ public class MainActivity extends Activity  {
 
     private RecyclerView recyclerView;
     private NavigationAdapter adapter;
-    private NavigationItem items;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,18 +29,18 @@ public class MainActivity extends Activity  {
 
     public ArrayList<NavigationItem> getFeedlyItems() {
         ArrayList<NavigationItem> items = new ArrayList<>();
-        items.add("S1-A");
-        items.add("S1-B");
-        items.add("S1-C");
+        items.add(new NavigationItem("S1-A"));
+        items.add(new NavigationItem("S1-B"));
+        items.add(new NavigationItem("S1-C"));
         return items;
     }
 
     public ArrayList<NavigationItem> getRedditItems() {
         ArrayList<NavigationItem> items = new ArrayList<>();
-        items.add("S2-A");
-        items.add("S2-B");
-        items.add("S2-C");
-        items.add("S2-D");
+        items.add(new NavigationItem("S2-A"));
+        items.add(new NavigationItem("S2-B"));
+        items.add(new NavigationItem("S2-C"));
+        items.add(new NavigationItem("S2-D"));
         return items;
     }
 }

@@ -15,8 +15,8 @@ public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.Vi
     private int staticItemsSize = 0;
 
     public NavigationAdapter() {
-        items.add("Header");
-        items.add("Settings");
+        items.add(new NavigationItem("Header"));
+        items.add(new NavigationItem("Settings"));
         staticItemsSize = items.size();
     }
 
@@ -30,7 +30,7 @@ public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.Vi
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         NavigationItem item = this.items.get(position);
-        holder.titleTextView.setText((CharSequence) item);
+        holder.titleTextView.setText(item.getTitle());
     }
 
     @Override
