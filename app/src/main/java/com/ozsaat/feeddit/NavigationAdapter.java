@@ -11,33 +11,31 @@ import java.util.List;
 
 public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.ViewHolder> {
     private final ArrayList<NavigationItem> items = new ArrayList<>();
+    private int iconResId;
     private int feedlyItemsSize = 0;
     private int staticItemsSize = 0;
 
     public NavigationAdapter() {
-        items.add(new NavigationItem("Header"));
-        items.add(new NavigationItem("Settings"));
+        items.add(new HeaderNavigationItem("Header"));
+        items.add(new IconNavigationItem("Settings",iconResId));
         staticItemsSize = items.size();
     }
 
-    @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    @Override public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.item_navigation_item, parent, false);
         return new ViewHolder(view);
     }
 
-    @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    @Override public void onBindViewHolder(ViewHolder holder, int position) {
         NavigationItem item = this.items.get(position);
         holder.titleTextView.setText(item.getTitle());
     }
 
-    @Override
-    public int getItemCount() {
+    @Override public int getItemCount() {
         return items.size();
-
     }
+
     static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView titleTextView;
 
@@ -49,7 +47,7 @@ public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.Vi
 
     public void setFeedlyItems(ArrayList<NavigationItem> feedlyItems) {
         List<? extends NavigationItem> tempStaticList = new ArrayList<>(items.subList(0, staticItemsSize));
-        List<? extends NavigationItem> tempRedditList = new ArrayList<>(items.subList(staticItemsSize+feedlyItemsSize, getItemCount()));
+        List<? extends NavigationItem> tempRedditList = new ArrayList<>(items.subList(staticItemsSize + feedlyItemsSize, getItemCount()));
         items.clear();
         items.addAll(tempStaticList);
         if (feedlyItems != null) {
@@ -63,7 +61,7 @@ public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.Vi
     }
 
     public void setRedditItems(ArrayList<NavigationItem> redditItems) {
-        List<? extends NavigationItem> tempList = new ArrayList<>(items.subList(0, staticItemsSize+feedlyItemsSize));
+        List<? extends NavigationItem> tempList = new ArrayList<>(items.subList(0, staticItemsSize + feedlyItemsSize));
         items.clear();
         items.addAll(tempList);
         if (redditItems != null) {
@@ -71,5 +69,4 @@ public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.Vi
         }
         notifyDataSetChanged();
     }
-
 }
