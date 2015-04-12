@@ -11,20 +11,23 @@ import java.util.List;
 
 public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.ViewHolder> {
     private final ArrayList<NavigationItem> items = new ArrayList<>();
-    private int iconResId;
     private int feedlyItemsSize = 0;
     private int staticItemsSize = 0;
 
     public NavigationAdapter() {
         items.add(new HeaderNavigationItem("Header"));
-        items.add(new IconNavigationItem("Settings",iconResId));
+        items.add(new IconNavigationItem("Settings", R.drawable.ic_launcher));
         staticItemsSize = items.size();
     }
 
     @Override public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.item_navigation_item, parent, false);
+        View view = inflater.inflate(ViewType.values()[viewType].getLayoutId(), parent, false);
         return new ViewHolder(view);
+    }
+
+    @Override public int getItemViewType(int position) {
+        return items.get(position).getViewType().ordinal();
     }
 
     @Override public void onBindViewHolder(ViewHolder holder, int position) {
@@ -34,15 +37,6 @@ public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.Vi
 
     @Override public int getItemCount() {
         return items.size();
-    }
-
-    static class ViewHolder extends RecyclerView.ViewHolder {
-        private final TextView titleTextView;
-
-        public ViewHolder(View itemView) {
-            super(itemView);
-            this.titleTextView = (TextView) itemView.findViewById(R.id.titleTextView);
-        }
     }
 
     public void setFeedlyItems(ArrayList<NavigationItem> feedlyItems) {
@@ -68,5 +62,28 @@ public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.Vi
             items.addAll(redditItems);
         }
         notifyDataSetChanged();
+    }
+
+    enum ViewType {
+        SIMPLE {
+            @Override public int getLayoutId() {
+                return R.layout.item_navigation;
+            }
+        }, ICON {
+            @Override public int getLayoutId() {
+                return R.layout.item_navigation_icon;
+            }
+        };
+
+        public abstract int getLayoutId();
+    }
+
+    static class ViewHolder extends RecyclerView.ViewHolder {
+        private final TextView titleTextView;
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+            this.titleTextView = (TextView) itemView.findViewById(R.id.titleTextView);
+        }
     }
 }
