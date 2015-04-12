@@ -1,10 +1,12 @@
-package com.ozsaat.feeddit;
+package com.ozsaat.feeddit.ui;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.ozsaat.feeddit.R;
 
 import java.util.ArrayList;
 import java.util.List;

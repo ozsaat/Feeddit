@@ -1,4 +1,4 @@
-package com.ozsaat.feeddit;
+package com.ozsaat.feeddit.ui;
 
 public class NavigationItem {
 
