@@ -25,20 +25,20 @@ public class MainActivity extends Activity {
         adapter.setFeedlyItems(getFeedlyItems());
     }
 
-    public ArrayList<NavigationItem> getFeedlyItems() {
-        ArrayList<NavigationItem> items = new ArrayList<>();
-        items.add(new NavigationItem("S1-A", NavigationAdapter.ViewType.SIMPLE));
-        items.add(new NavigationItem("S1-B", NavigationAdapter.ViewType.SIMPLE));
-        items.add(new NavigationItem("S1-C", NavigationAdapter.ViewType.SIMPLE));
+    public ArrayList<NavigationAdapter.NavigationItem> getFeedlyItems() {
+        ArrayList<NavigationAdapter.NavigationItem> items = new ArrayList<>();
+        items.add(new NavigationAdapter.SimpleNavigationItem("S1-A"));
+        items.add(new NavigationAdapter.SimpleNavigationItem("S1-B"));
+        items.add(new NavigationAdapter.SimpleNavigationItem("S1-C"));
         return items;
     }
 
-    public ArrayList<NavigationItem> getRedditItems() {
-        ArrayList<NavigationItem> items = new ArrayList<>();
-        items.add(new NavigationItem("S2-A", NavigationAdapter.ViewType.SIMPLE));
-        items.add(new NavigationItem("S2-B", NavigationAdapter.ViewType.SIMPLE));
-        items.add(new NavigationItem("S2-C", NavigationAdapter.ViewType.SIMPLE));
-        items.add(new NavigationItem("S2-D", NavigationAdapter.ViewType.SIMPLE));
+    public ArrayList<NavigationAdapter.NavigationItem> getRedditItems() {
+        ArrayList<NavigationAdapter.NavigationItem> items = new ArrayList<>();
+        items.add(new NavigationAdapter.SimpleNavigationItem("S2-A"));
+        items.add(new NavigationAdapter.SimpleNavigationItem("S2-B"));
+        items.add(new NavigationAdapter.SimpleNavigationItem("S2-C"));
+        items.add(new NavigationAdapter.SimpleNavigationItem("S2-D"));
         return items;
     }
 }
